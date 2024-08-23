@@ -1,1 +1,1 @@
-# CQRS-Architectural-
+# CQRS-Architectural
