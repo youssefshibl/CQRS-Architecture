@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS shop.order_items
     id SERIAL PRIMARY KEY,
     order_id BIGINT UNSIGNED REFERENCES orders(order_id),
     name VARCHAR(255),
-    quantity INT DEFAULT 1
+    quantity INT DEFAULT 1,
+    price DECIMAL(10, 2) NOT NULL
 );
 
 -- Sample structure for orders table
@@ -47,6 +48,8 @@ CREATE TABLE shop.orders (
     user_id INT NOT NULL,
     total DECIMAL(10, 2) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    order_status VARCHAR(255),
+    updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES shop.users(user_id) ON DELETE CASCADE
 );
 
@@ -68,10 +71,10 @@ INSERT INTO shop.addresses (user_id, street, city, state, postal_code, country) 
 (2, '456 Oak Avenue', 'Metropolis', 'New York', '10001', 'USA');
 
 
-INSERT INTO shop.orders (user_id, total) VALUES (1, 50.00);
-INSERT INTO shop.orders (user_id, total) VALUES (2, 149.95);
+INSERT INTO shop.orders (user_id, total,order_status) VALUES (1, 50.00,'created');
+INSERT INTO shop.orders (user_id, total,order_status) VALUES (2, 149.95,'created');
 
-INSERT INTO shop.order_items (order_id, name, quantity) VALUES (1, 'Sri Lankan Spicy Chicken Pizza', 1);
-INSERT INTO shop.order_items (order_id, name, quantity) VALUES (1, 'Chicken BBQ', 1);
-INSERT INTO shop.order_items (order_id, name, quantity) VALUES (2, 'Macaroni & Cheese', 1);
-INSERT INTO shop.order_items (order_id, name, quantity) VALUES (2, 'Cheesy Garlic Bread Supreme', 1);
+INSERT INTO shop.order_items (order_id, name, quantity, price) VALUES (1, 'Sri Lankan Spicy Chicken Pizza', 1, 58.5);
+INSERT INTO shop.order_items (order_id, name, quantity, price) VALUES (1, 'Chicken BBQ', 1, 500);
+INSERT INTO shop.order_items (order_id, name, quantity, price) VALUES (2, 'Macaroni & Cheese', 1,150.5);
+INSERT INTO shop.order_items (order_id, name, quantity, price) VALUES (2, 'Cheesy Garlic Bread Supreme', 1,25.6);
