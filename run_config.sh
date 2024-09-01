@@ -1,6 +1,5 @@
 #!/bin/bash
 
-docker compose up -d
 
 curl -H 'Content-Type: application/json' localhost:8083/connectors --data '
 {
@@ -20,4 +19,17 @@ curl -H 'Content-Type: application/json' localhost:8083/connectors --data '
    }
 }'
 
+sleep 10
 
+
+USER="materialize"
+HOST="localhost"
+PORT="6875"
+DATABASE="materialize"
+
+# Execute a series of SQL queries from a file
+psql -U "$USER" -h "$HOST" -p "$PORT" -d "$DATABASE" -f "./infra/queries.sql"
+
+
+
+node ./test_realtime.js

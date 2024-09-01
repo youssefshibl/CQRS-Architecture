@@ -59,22 +59,3 @@ CREATE TABLE shop.orders (
 
 
 
-
-
-INSERT INTO shop.users (name, email, phone) VALUES
-('Alice Johnson', 'alice.johnson@example.com', '123-456-7890'),
-('Bob Smith', 'bob.smith@example.com', '098-765-4321');
-
-
-INSERT INTO shop.addresses (user_id, street, city, state, postal_code, country) VALUES
-(1, '123 Maple Street', 'Springfield', 'Illinois', '62704', 'USA'),
-(2, '456 Oak Avenue', 'Metropolis', 'New York', '10001', 'USA');
-
-
-INSERT INTO shop.orders (user_id, total,order_status) VALUES (1, 50.00,'created');
-INSERT INTO shop.orders (user_id, total,order_status) VALUES (2, 149.95,'created');
-
-INSERT INTO shop.order_items (order_id, name, quantity, price) VALUES (1, 'Sri Lankan Spicy Chicken Pizza', 1, 58.5);
-INSERT INTO shop.order_items (order_id, name, quantity, price) VALUES (1, 'Chicken BBQ', 1, 500);
-INSERT INTO shop.order_items (order_id, name, quantity, price) VALUES (2, 'Macaroni & Cheese', 1,150.5);
-INSERT INTO shop.order_items (order_id, name, quantity, price) VALUES (2, 'Cheesy Garlic Bread Supreme', 1,25.6);

@@ -39,6 +39,19 @@ FORMAT AVRO USING CONFLUENT SCHEMA REGISTRY 'http://schema-registry:8081' ENVELO
 CREATE SOURCE order_items
 FROM KAFKA BROKER 'kafka:9092' TOPIC 'mysql.shop.order_items'
 FORMAT AVRO USING CONFLUENT SCHEMA REGISTRY 'http://schema-registry:8081' ENVELOPE DEBEZIUM;
+
+CREATE SOURCE updates_source
+FROM KAFKA BROKER 'kafka:9092' TOPIC 'order_updates'
+FORMAT BYTES;
+
+CREATE MATERIALIZED VIEW updates AS
+SELECT
+(data->>'id')::int AS id,
+(data->>'order_id')::int AS order_id,
+data->>'status' AS status,
+data->>'updated_at' AS updated_at
+FROM (SELECT CONVERT_FROM(data, 'utf8')::jsonb AS data FROM updates_source);
+
 ```
 
 
@@ -53,5 +66,5 @@ List all topics
 ```
 List all messages in topic 
 ```bash
-./kafka-console-consumer.sh --bootstrap-server  localhost:29092  --topic mysql.shop.users --from-beginning
+./kafka-console-consumer.sh --bootstrap-server  localhost:29092  --topic order_updates --from-beginning
 ```
