@@ -1,6 +1,6 @@
 import mysql from "mysql2";
 import { faker } from "@faker-js/faker";
-import { pool } from "./connection.js"
+import { pool } from "../connection.js"
 
 
 
@@ -66,12 +66,11 @@ async function insertUsers(numberOfUsers, numberOfOrdersOfUser, ItemsNumber) {
 // Generate and insert data
 (async function () {
     try {
-        let numberOfUsers = 2;
+        let numberOfUsers = 20;
         let numberOfOrders = 3;
         let numberOfItems = 2;
         await insertUsers(numberOfUsers, numberOfOrders, numberOfItems);
         console.log(`${numberOfUsers} users with their addresses, orders, and order items have been inserted.`);
-        run().catch(console.error);
     } catch (err) {
         console.error("Error inserting data: ", err);
     } finally {

@@ -1,6 +1,12 @@
 #!/bin/bash
 
 
+# run docker compose 
+docker compose up -d
+
+sleep 10
+
+# config debezium
 curl -H 'Content-Type: application/json' localhost:8083/connectors --data '
 {
    "name":"orders-connector",
@@ -21,15 +27,15 @@ curl -H 'Content-Type: application/json' localhost:8083/connectors --data '
 
 sleep 10
 
+# set dummy data users,orders,addresses
+node ./scripts/test_realtime.js
 
-USER="materialize"
-HOST="localhost"
-PORT="6875"
-DATABASE="materialize"
+sleep 10
 
-# Execute a series of SQL queries from a file
-psql -U "$USER" -h "$HOST" -p "$PORT" -d "$DATABASE" -f "./infra/queries.sql"
+# creating materialize sources and views
+psql -U materialize -h localhost -p 6875 materialize -f "./infra/queries.sql"
 
+sleep 10
 
-
-node ./test_realtime.js
+# start to push events
+node ./scripts/push_events.js
