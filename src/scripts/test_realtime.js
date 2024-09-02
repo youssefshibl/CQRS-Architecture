@@ -1,6 +1,6 @@
 import mysql from "mysql2";
 import { faker } from "@faker-js/faker";
-import { pool } from "../connection.js"
+import { pool } from "./connection.js"
 
 
 

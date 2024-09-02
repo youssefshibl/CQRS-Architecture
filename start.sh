@@ -28,7 +28,7 @@ curl -H 'Content-Type: application/json' localhost:8083/connectors --data '
 sleep 10
 
 # set dummy data users,orders,addresses
-node ./scripts/test_realtime.js
+node ./src/scripts/test_realtime.js
 
 sleep 10
 
@@ -38,4 +38,4 @@ psql -U materialize -h localhost -p 6875 materialize -f "./infra/queries.sql"
 sleep 10
 
 # start to push events
-node ./scripts/push_events.js 1 42
+node ./src/scripts/push_events.js 1 42

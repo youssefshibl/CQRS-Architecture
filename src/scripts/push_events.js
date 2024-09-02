@@ -1,4 +1,4 @@
-import { Kafka } from '../src/node_modules/kafkajs/types';
+import { Kafka } from 'kafkajs';
 
 // Create a new Kafka instance
 const kafka = new Kafka({
