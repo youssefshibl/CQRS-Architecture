@@ -4,7 +4,7 @@
 # run docker compose 
 docker compose up -d
 
-sleep 10
+sleep 30
 
 # config debezium
 curl -H 'Content-Type: application/json' localhost:8083/connectors --data '
