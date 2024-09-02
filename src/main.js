@@ -3,7 +3,7 @@ import { pool } from "./connection.js"
 import pg from 'pg'
 const { Client } = pg
 const client = new Client({
-    host: 'localhost',  
+    host: 'materialized',  
     port: 6875,       
     user: 'materialize',  
     password: '',  

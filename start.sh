@@ -38,4 +38,4 @@ psql -U materialize -h localhost -p 6875 materialize -f "./infra/queries.sql"
 sleep 10
 
 # start to push events
-node ./scripts/push_events.js
+node ./scripts/push_events.js 1 42

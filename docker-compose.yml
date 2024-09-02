@@ -71,3 +71,15 @@ services:
     ports:
       - 6875:6875
     healthcheck: {test: curl -f localhost:6875, interval: 1s, start_period: 30s}
+  app:
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    depends_on:
+      kafka: {condition: service_healthy}
+      mysql: {condition: service_healthy}
