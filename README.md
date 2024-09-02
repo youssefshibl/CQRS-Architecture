@@ -203,3 +203,9 @@ node ./src/scripts/push_events.js 1 42
 - **Materialize**
 - **Docker**
 - **Bash**
+
+### 📚 Resources
+
+- [Building CQRS Views with Debezium, Kafka, Materialize, and Apache Pinot](https://medium.com/event-driven-utopia/building-cqrs-views-with-debezium-kafka-materialize-and-apache-pinot-part-1-4f697735b2e4)
+- [Materialize](https://materialize.com/)
+- [Debezium](https://debezium.io/)
