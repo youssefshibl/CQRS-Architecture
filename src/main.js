@@ -29,14 +29,14 @@ app.get('/orders', async (req, res) => {
 app.get('/users', async (req, res) => {
     let sql = "SELECT * from shop.users";
     const [rows] = await pool.query(sql)
-    res.status(200).json({ orders: rows });
+    res.status(200).json({ users: rows });
 });
 
 
 app.get('/addresses', async (req, res) => {
     let sql = "SELECT * from shop.addresses";
     const [rows] = await pool.query(sql)
-    res.status(200).json({ orders: rows });
+    res.status(200).json({ addresses: rows });
 });
 
 

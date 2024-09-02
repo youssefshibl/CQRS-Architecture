@@ -25,6 +25,7 @@ curl -H 'Content-Type: application/json' localhost:8083/connectors --data '
    }
 }'
 
+
 sleep 10
 
 # set dummy data users,orders,addresses
